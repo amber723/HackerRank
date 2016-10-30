@@ -1,0 +1,43 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    //1: Math
+    /*public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        while(n-- > 0){
+            int a = in.nextInt();
+            System.out.println(a%7 < 2 ? "Second" : "First");
+        }
+        in.close();
+    }*/
+    
+    //2: DP
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int[] dp = new int[101];
+        dp[0]=0; //0 means losing position
+        dp[1]=0;
+        dp[2]=1; //1 means winning position
+        dp[3]=1;
+        dp[4]=1;
+        dp[5]=1;
+
+        for(int i = 6; i <= 100; i++){
+            //if you can move to at least one losing position, the current position is winning
+            if(dp[i-2] == 0 || dp[i-3] == 0 || dp[i-5] == 0)
+              dp[i]=1;  
+            else dp[i]=0;
+        }
+        
+        while(n-- > 0){
+            int a = in.nextInt();
+            System.out.println(dp[a] == 1 ? "First" : "Second");
+        }
+        in.close();
+    }
+
+}
