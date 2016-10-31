@@ -1,0 +1,42 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+ 
+    /**
+	 * We will convert this problem to addition from division. 
+     * We can easily observe that two numbers n1 and n2 are divisible by k if and only if - 
+	 * (n1 % k) + (n2 % k) = k
+	 */
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int k = in.nextInt();
+        int[] a = new int[n];
+        for(int i = 0; i < n; i++){
+            a[i] = in.nextInt();
+        }
+        in.close();
+        
+        int res = NonDivisibleSubset(a, k, n);
+        System.out.println(res);
+        
+    }
+    
+    public static int NonDivisibleSubset(int[] a, int k, int n){
+		int[] map = new int[k];
+		for(int i = 0; i < n; i++) {
+			int r = a[i] % k;
+			map[r]++;
+		}
+
+		int res = map[0] > 0 ? 1 : 0;
+        int i = 1;
+		for(; 2 * i < k; i++) {
+			res += Math.max(map[i], map[k - i]);
+		}
+
+		if(2 * i == k) res++;
+		return res;  
+    }
+}
