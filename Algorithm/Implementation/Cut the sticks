@@ -1,0 +1,32 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int[] a = new int[n];
+        int min = Integer.MAX_VALUE;
+        for(int i = 0; i < n; i++){
+            a[i] = in.nextInt();
+            if(a[i] < min) min = a[i];
+        }
+        in.close();
+        
+        int l = n;
+        while(l > 0){
+            System.out.println(l);
+            int newMin = Integer.MAX_VALUE;
+            for(int i = 0; i < n; i++){
+                if(a[i] > 0){
+                    a[i] -= min;
+                    if(a[i] == 0) l--;
+                    else if(a[i] < newMin) newMin = a[i];
+                } 
+            }
+            min = newMin;
+        }
+        
+    }
+}
