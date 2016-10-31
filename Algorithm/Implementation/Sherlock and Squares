@@ -1,0 +1,23 @@
+//https://www.hackerrank.com/challenges/sherlock-and-squares
+
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int t = in.nextInt();
+        for(int i = 0; i < t; i++){
+            int a = in.nextInt();
+            int b = in.nextInt();
+            int lo = (int)Math.floor(Math.sqrt(a));
+            int hi = (int)Math.ceil(Math.sqrt(b));
+            int res = hi - lo + 1;
+            if(lo*lo < a) res--;
+            if(hi*hi > b) res--;
+            System.out.println(res);
+        }
+        in.close();
+    }
+}
