@@ -1,0 +1,35 @@
+//https://www.hackerrank.com/challenges/jumping-on-the-clouds/submissions/code/31348489
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int c[] = new int[n];
+        for(int c_i=0; c_i < n; c_i++){
+            c[c_i] = in.nextInt();
+        }
+        in.close();
+        int res = MinSteps(c, n);
+        System.out.println(res);
+    }
+    
+    public static int MinSteps(int[] c, int n){
+        int res = 0;
+        int i = 0;
+        while(i < n - 2){
+            if(c[i + 2] == 0)
+                i += 2;
+            else i++;
+            res++; 
+        }
+        if(i == (n - 2)) res++;
+        return res;
+    }
+}
