@@ -1,0 +1,33 @@
+//https://www.hackerrank.com/challenges/repeated-string
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String s = in.next();
+        long n = in.nextLong();
+        in.close();
+        int k = s.length();
+        long res = NumOfRepeatedA(s, k, n);
+        System.out.println(res);
+    }
+    
+    public static long NumOfRepeatedA(String s, int k, long n) {
+        long q = n / k;
+        long r = n % k;
+        long res = 0;
+        for (int i = 0; i < k; i++) {
+            if (s.charAt(i) == 'a') {
+                res += q;
+                if (i < r) res++;
+            }
+        }
+        return res;
+    }
+}
