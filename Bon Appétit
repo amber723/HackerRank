@@ -1,0 +1,31 @@
+//https://www.hackerrank.com/challenges/bon-appetit
+
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int k = in.nextInt();
+        int[] a = new int[n];
+        for(int i = 0; i < n; i++)
+            a[i] = in.nextInt();
+        int b = in.nextInt();
+        in.close();
+        
+        int res = OverCharge(a, n, k, b);
+        System.out.println(res == 0 ? "Bon Appetit" : res);
+    }
+    
+    public static int OverCharge(int[] a, int n, int k, int b){
+        int res = 0, sum = 0;
+        for(int i = 0; i < n; i++)
+            sum += a[i];
+        sum -= a[k];
+        sum /= 2;
+        res = b - sum;
+        return res;
+    }
+}
