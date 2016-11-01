@@ -1,0 +1,32 @@
+//https://www.hackerrank.com/challenges/cavity-map
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        char[][] c = new char[n][];
+        for (int i = 0; i < n; ++i) {
+            c[i] = in.next().toCharArray();
+        }
+        in.close();
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < n; j++){
+                char tmp = c[i][j];
+                if( i > 0 && j > 0 && i < n - 1 && j < n - 1 &&
+                    c[i - 1][j] < tmp && c[i][j - 1] < tmp && c[i + 1][j] < tmp && c[i][j + 1] < tmp)
+                    System.out.print("X");
+                else
+                    System.out.print(tmp);
+            }
+            System.out.println();
+        }
+    }
+}
+                
