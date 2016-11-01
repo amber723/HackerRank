@@ -1,0 +1,37 @@
+//https://www.hackerrank.com/challenges/taum-and-bday
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int t = in.nextInt();
+        for(int a0 = 0; a0 < t; a0++){
+            long b = in.nextLong();
+            long w = in.nextLong();
+            long x = in.nextLong();
+            long y = in.nextLong();
+            long z = in.nextLong();
+            
+            long res = MinCost(b, w, x, y, z);
+            System.out.println(res);
+        }
+        in.close();
+    }
+    
+    public static long MinCost(long b, long w, long x, long y, long z){
+        long c1 = 0, c2 = 0;
+        if(x > y + z)
+            c1 = y + z;
+        else c1 = x;
+        if(y > x + z)
+            c2 = x + z;
+        else c2 = y;
+        return b * c1 + w * c2;
+    }
+}
