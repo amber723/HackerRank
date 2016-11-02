@@ -1,0 +1,27 @@
+//https://www.hackerrank.com/challenges/making-anagrams
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        char[] a = in.next().toCharArray();
+        char[] b = in.next().toCharArray();
+        
+        int count = 0;
+        int[] m = new int[26];
+        for(char c : a)
+            m[c - 'a']++;
+        for(char c : b){
+            if(m[c - 'a'] > 0) count++;
+            m[c - 'a']--;
+        }
+
+         System.out.println(a.length + b.length - 2 * count);
+    }
+}
