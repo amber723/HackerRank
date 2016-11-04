@@ -1,0 +1,42 @@
+//https://www.hackerrank.com/challenges/missing-numbers
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int i = 0; i < n; i++){
+            int x = in.nextInt();
+            if(!map.containsKey(x)){
+                map.put(x, 1);
+            }else{
+                map.put(x, 1 + map.get(x));
+            }
+        }
+            
+        int m = in.nextInt();
+        for(int i = 0; i < m; i++){
+            int x = in.nextInt();
+            if(!map.containsKey(x)){
+                map.put(x, -1);
+            }else{
+                map.put(x, map.get(x) - 1);
+            }
+        }
+        TreeMap sortedHashMap = new TreeMap(map);
+        Iterator<Integer> iterator = sortedHashMap.keySet().iterator();
+        while(iterator.hasNext()){
+            Integer key = iterator.next();
+            if(map.get(key) < 0)
+                System.out.print(key + " ");
+        }
+
+    }
+}
