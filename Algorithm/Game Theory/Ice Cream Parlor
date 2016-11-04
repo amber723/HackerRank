@@ -1,0 +1,44 @@
+//https://www.hackerrank.com/challenges/icecream-parlor
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int t = in.nextInt();
+        for(int i = 0; i < t; i++){
+            int m = in.nextInt();
+            int n = in.nextInt();
+            int[] a = new int[n];
+            for(int j = 0; j < n; j++){
+                a[j] = in.nextInt();
+            }
+             
+            int[] res = IceCreamParlor(a, m ,n);
+            System.out.println(res[0]+" "+res[1]);
+        }
+        in.close();
+    }
+    
+    public static int[] IceCreamParlor(int[] a, int m, int n){
+        int[] res = new int[2];
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+        for(int i = 0; i < n; i++){
+            if(map.containsKey(m - a[i])){
+                int j = map.get(m - a[i]);
+                res[0] = i < j ? i + 1 : j + 1;
+                res[1] = i < j ? j + 1 : i + 1;
+                return res;
+            }
+                        if(!map.containsKey(a[i])){
+                map.put(a[i], i);  
+            }
+        }
+        return res;
+    }
+}
