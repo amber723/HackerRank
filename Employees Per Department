@@ -1,0 +1,4 @@
+select d.name, count(e.id)
+from Department d left join Employee e on (e.dept_id = d.dept_id)
+group by d.dept_id
+order by count(e.id) DESC, d.name ASC;
